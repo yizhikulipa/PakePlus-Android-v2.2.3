@@ -1,11 +1,104 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>PakePlus</title>
-    </head>
-    <body>
-        PakePlus
-    </body>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>同桌的毕业礼物</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+
+    <!-- ========== 主屏幕 ========== -->
+    <div id="mainScreen" class="screen active">
+        <div class="main-header">
+            <div class="main-icon">🎁</div>
+            <h1 class="main-title">送给亲爱的同桌</h1>
+            <p class="main-sub">—— 毕业快乐！致最好的你 ——</p>
+        </div>
+        <div class="card-grid">
+            <div class="card card-pink" onclick="navTo('draw')">
+                <span class="card-icon">🎨</span>
+                <span class="card-title">专业画板</span>
+                <span class="card-desc">6种笔刷 · 图层 · 导出</span>
+            </div>
+            <div class="card card-purple" onclick="navTo('gameMenu')">
+                <span class="card-icon">🎮</span>
+                <span class="card-title">游戏合集</span>
+                <span class="card-desc">15款精选小游戏</span>
+            </div>
+            <div class="card card-blue" onclick="showAbout()">
+                <span class="card-icon">💌</span>
+                <span class="card-title">毕业寄语</span>
+                <span class="card-desc">写给你的话</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== 画板屏幕 ========== -->
+    <div id="drawScreen" class="screen">
+        <div class="toolbar" id="drawToolbar">
+            <button class="tbtn active" data-tool="pencil">✏️</button>
+            <button class="tbtn" data-tool="brush">🖌️</button>
+            <button class="tbtn" data-tool="marker">🖍️</button>
+            <button class="tbtn" data-tool="water">🎨</button>
+            <button class="tbtn" data-tool="crayon">✏</button>
+            <button class="tbtn" data-tool="rainbow">🌈</button>
+            <button class="tbtn" data-tool="eraser">🧹</button>
+            <span class="tsep"></span>
+            <input type="range" id="brushSize" min="1" max="40" value="5">
+            <span id="sizeLabel">5px</span>
+            <input type="color" id="brushColor" value="#000000">
+            <span class="tsep"></span>
+            <button class="tbtn" id="layerBtn">📑</button>
+            <button class="tbtn" id="undoBtn">↩</button>
+            <button class="tbtn" id="saveBtn">💾</button>
+            <button class="tbtn" id="saveAsBtn">📂</button>
+            <button class="tbtn" id="clearBtn">🗑</button>
+            <button class="tbtn" id="backDrawBtn">🏠</button>
+        </div>
+        <div class="canvas-wrap">
+            <canvas id="drawCanvas"></canvas>
+        </div>
+    </div>
+
+    <!-- ========== 游戏菜单 ========== -->
+    <div id="gameMenuScreen" class="screen">
+        <div class="top-bar">
+            <button class="back-btn" onclick="navTo('main')">← 返回</button>
+            <span>🎮 小游戏合集</span>
+        </div>
+        <div class="game-list" id="gameList"></div>
+    </div>
+
+    <!-- ========== 游戏运行屏幕 ========== -->
+    <div id="gameScreen" class="screen">
+        <div class="top-bar">
+            <button class="back-btn" id="gameBackBtn">← 返回</button>
+            <span id="gameTitle">游戏</span>
+            <span id="gameScore"></span>
+        </div>
+        <div class="game-area" id="gameArea"></div>
+        <div class="game-ctrls" id="gameCtrls"></div>
+    </div>
+
+</div>
+
+<!-- 自定义对话框 -->
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal-box">
+        <h3 id="modalTitle">提示</h3>
+        <div id="modalBody"></div>
+        <div class="modal-btns">
+            <button class="btn-cancel" id="modalCancel">取消</button>
+            <button class="btn-ok" id="modalOk">确认</button>
+        </div>
+    </div>
+</div>
+
+<script src="modal.js"></script>
+<script src="draw.js"></script>
+<script src="games.js"></script>
+<script src="app.js"></script>
+</body>
 </html>
